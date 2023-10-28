@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+  <body>
+
+    <main class="container py-5">
+      <div class="row">
+          {% for post in post_list %}
+              <div class="col-sm-12 col-md-6">
+                  <div class="card bg-dark">
+                      <div class="position-relative">
+                        <h5 class="card-title position-relative m-4
+                        custom-underline text-light">{{ post.title }}</h5>
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
+                      </div>
+                      <div class="card-body">
+                          <p class="card-text">{{ post.content|slice:":150" }} </p>
+                          <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
+                      </div>
+                  </div>
+              </div>
+          {% endfor %}
+      </div>
+  </main>
+
+
+
+
+
+{% endblock %}
+    
+  </body>
+</html>

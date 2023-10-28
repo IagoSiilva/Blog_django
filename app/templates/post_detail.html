@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+<main class="container py-5">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card bg-dark">
+                <div class="card-body">
+                    <h5 class="card-title text-primary"> {% block title %} {{ object.title }} {% endblock title %}</h5>
+                    <p class="card-text"> {{object.content | safe}}</p>
+                </div>
+            </div>
+        </div>
+
+</main>
+{% endblock %}
