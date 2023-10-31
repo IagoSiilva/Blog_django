@@ -11,29 +11,36 @@
 
     <main class="container py-5">
       <div class="row">
-          {% for post in post_list %}
+          {% for post in posts %}
+          <!-- verificar se o status do post é igual a 1 (Publicado) -->
+            {% if post.status == 1 %} {# Verifica se o status do post é 1 (Publicado) #} 
               <div class="col-sm-12 col-md-6">
                   <div class="card bg-dark">
                       <div class="position-relative">
                         <h5 class="card-title position-relative m-4
                         custom-underline text-light">{{ post.title }}</h5>
-                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
+                        {% if post.image %}
+                          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
+                        {% endif %}
                       </div>
                       <div class="card-body">
                           <p class="card-text">{{ post.content|slice:":150" }} </p>
+                          {% if post.slug %}
                           <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
+                          {% endif %}
                       </div>
                   </div>
               </div>
+            {% endif %}
           {% endfor %}
       </div>
   </main>
+    <a href="{% url 'create_post' %}" class="btn btn-custom floating-button" title="">Novo Post</a>
 
 
 
 
 
 {% endblock %}
-    
   </body>
 </html>
