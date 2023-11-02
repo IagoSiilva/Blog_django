@@ -10,6 +10,11 @@ nav{
 }
 .navbar {
     font-family: 'Manrope', sans-serif;
+    /* position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; */
+    width: 100%;
 }
 .nav-link{
     color: #4E4FEB;
@@ -148,6 +153,7 @@ nav{
 }
 ::-webkit-scrollbar-thumb{
     background-color: #4E4FEB;
+    border-radius: 5px;
 }
 h2{
     color: #068FFF;

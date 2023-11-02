@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
@@ -11,8 +12,8 @@ urlpatterns = [
     path('registro/', views.register, name='register'),
     path('user/<str:username>/', views.user_profile, name='user_profile'),
     path('sobre/', views.about, name='about'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('<slug:slug>/', views.DetailView.as_view(), name='post_detail'),
-    
     
 ]
 
