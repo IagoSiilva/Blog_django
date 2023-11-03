@@ -8,7 +8,7 @@
     <title></title>
   </head>
   <body>
-
+    {% include "navbar.html" %}
     <main class="container py-5">
       <div class="row">
           {% for post in posts %}
@@ -16,15 +16,15 @@
             {% if post.status == 1 %} {# Verifica se o status do post é 1 (Publicado) #} 
               <div class="col-sm-12 col-md-6">
                   <div class="card bg-dark">
-                      <div class="position-relative">
+                      <div class="position-relative text-center">
                         <h5 class="card-title position-relative m-4
                         custom-underline text-light">{{ post.title }}</h5>
                         {% if post.image %}
                           <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
                         {% endif %}
                       </div>
-                      <div class="card-body">
-                          <p class="card-text">{{ post.content|slice:":150" }} </p>
+                      <div class="card-body custom-card-text">
+                          <p class="card-text">{{ post.content|slice:":150" }}{% if post.content|length > 150 %}...{% endif %} </p>
                           {% if post.slug %}
                           <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
                           {% endif %}

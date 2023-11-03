@@ -14,34 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap" rel="stylesheet">
   </head>
   <body>
-  <!-- Navbar que vai estar presente em todas as abas -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-custom">
-      <div class="container-fluid">
-        <a class="navbar-brand nav-link active " href="{% url 'home' %}">IagoBlog</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="{% url 'about' %}">Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 custom-input" type="search" placeholder="Procurar" aria-label="Procurar">
-            <button class="btn btn-custom" type="submit">Procurar</button>
-          </form>
-          {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'user_profile' user.username %}">Meu Perfil</a>
-            </li>
-          {% endif %}
-        </div>
-      </div>
-    </nav>
+  <!-- Navbar que vai estar presente em algumas abas -->
 
     {% block content %}
         

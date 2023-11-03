@@ -1,0 +1,23 @@
+body{
+    color: antiquewhite;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    background-color: #1B1B1B;
+    color: #fff;
+    border: 1px solid #4E4FEB;
+    margin: 10  px 0;
+}
+div.form-group label.text-custom{
+    color: #4E4FEB;
+}
+h2{
+    color: #4E4FEB;
+}
+.custom-input {
+    background-color: #1B1B1B;
+    color: #fff;
+    border: 1px solid #555;
+    margin: 5px 0;
+}

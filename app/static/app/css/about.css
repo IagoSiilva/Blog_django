@@ -1,8 +1,19 @@
 body{
-    background-color: #1B1B1B;
+    background-color: #1B1B1B ;
     font-family: 'Manrope', sans-serif;   
 
 }
-h2 .titulo{
-    color: #4E4FEB;
+div.container h2.titulo {
+    color: #4E4FEB; /* Cor do título, você pode alterar para a cor desejada */
+    font-size: 30px; /* Tamanho da fonte do título */
+    font-weight: bold; /* Negrito */
+    margin-top: 20px; /* Espaço superior */
+    margin-bottom: 30px;
+}
+
+/* Estilo para os parágrafos */
+.container p {
+    color: #4E4FEB; /* Cor do texto dos parágrafos */
+    font-size: 18px; /* Tamanho da fonte dos parágrafos */
+    margin-top: 10px; /* Espaço superior entre os parágrafos */
 }

@@ -1,0 +1,29 @@
+div.card_detalhes img.imagem-com-borda {
+    border: 5px solid #4E4FEB; 
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px #4E4FEB;
+    border-color: #4E4FEB;
+}
+h3.card-title{
+    font-size: 40px;
+    color: #4E4FEB;
+    margin-top: 10px;
+}
+p.card-text {
+    color: #4E4FEB;
+    font-size: 19px;
+}
+.linha {
+    position: relative;
+}
+
+.linha::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px; 
+    background-color: #4E4FEB; 
+    bottom: 0;
+    left: 0;
+    margin-top: 5px;
+}
