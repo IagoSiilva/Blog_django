@@ -14,10 +14,11 @@ div.form-group label.text-custom{
 }
 h2{
     color: #4E4FEB;
+    margin-top: 2px;
 }
-.custom-input {
+/* .custom-input {
     background-color: #1B1B1B;
     color: #fff;
     border: 1px solid #555;
     margin: 5px 0;
-}
+} */
