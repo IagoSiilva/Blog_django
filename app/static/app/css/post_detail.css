@@ -1,3 +1,16 @@
+/* Personalizando scroll post_details */
+
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-track{
+    background-color: #1B1B12;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+
 div.card_detalhes img.imagem-com-borda {
     border: 5px solid #4E4FEB; 
     border-radius: 15px;
@@ -10,7 +23,7 @@ h3.card-title{
     margin-top: 10px;
 }
 p.card-text {
-    color: #4E4FEB;
+    color: #fff;
     font-size: 19px;
 }
 .linha {
@@ -26,4 +39,85 @@ p.card-text {
     bottom: 0;
     left: 0;
     margin-top: 5px;
+}
+/* Formulário de comentário */
+
+.comment-form {
+    background-color: #1B1B1B;
+    color: #fff;
+    padding: 20px;
+    border: 1px solid #4E4FEB;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* campo de texto do comentário */
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    background-color: #1B1B1B;
+    border: 1px solid #4E4FEB;
+    border-radius: 5px;
+    resize: none; /* Impede o redimensionamento do campo de texto */
+}
+
+.comment-form textarea:focus {
+    background-color: #1B1B1B; /* Cor de fundo quando o input está em foco (clique) */
+    color: #fff;
+}
+
+/* Estilize o botão de envio */
+.comment-form button {
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    background-color: #4E4FEB;
+}
+
+.comment-form button:hover {
+    background-color: #068FFF;
+}
+
+/* Estilizando a lista de comentários */
+.comment-list {
+    background-color: #1B1B1B; /* Cor de fundo da lista de comentários */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* Estilize os comentários individuais */
+li.comment {
+    margin-bottom: 20px; /* Margem entre os comentários */
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #4E4FEB;
+    border-radius: 5px;
+    background-color: #1B1B1B !important; /* Cor de fundo dos comentários */
+}
+
+/* Estilizando o autor dos comentários */
+.comment .author {
+    font-size: 30px;
+    font-weight: bold;
+    color: #4E4FEB; 
+}
+
+/* Estilizando o texto dos comentários */
+.comment .text {
+    margin-top: 4px;
+    font-size: 16px; 
+    color: #fff;
+}
+li.no-comments {
+    background-color: #1B1B1B; 
+    color: #4E4FEB;
+    text-align: center;
+    margin-top: 20px; 
+    padding: 10px; 
+    border: 1px solid #4E4FEB; 
+    border-radius: 5px; 
 }

@@ -52,7 +52,16 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
 
-#tetes
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    text = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Comment by {self.author.username} on {self.post.title}'
+
+#testes
     # image = models.ImageField(upload_to='post_images/')
     # image = models.ImageField(upload_to='post_images', default='path/to/default/image.jpg')
 

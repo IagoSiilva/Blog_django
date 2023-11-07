@@ -13,6 +13,8 @@ urlpatterns = [
     path('user/<str:username>/', views.user_profile, name='user_profile'),
     path('sobre/', views.about, name='about'),
     path('logout/', LogoutView.as_view(), name='logout'),
+    path('post/<slug:slug>/add_comment/', views.add_comment, name='add_comment'),
+    path('search/', views.search_posts, name='search_posts'),
     path('<slug:slug>/', views.DetailView.as_view(), name='post_detail'),
     
 ]

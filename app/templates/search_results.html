@@ -1,0 +1,30 @@
+{% load static %}
+{% include "navbar.html" %}
+{% if query %}
+    <h2 class="resultados">Resultados da pesquisa para: "{{ query }}"</h2>
+    <div class="">
+        {% for post in posts %}
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark mb-3 custom-card" style="max-width: 400px;">
+                    <div class="position-relative text-center">
+                        <h5 class="card-title position-relative m-4 custom-underline text-light">{{ post.title }}</h5>
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
+                        {% endif %}
+                    </div>
+                    <div class="card-body custom-card-text">
+                        <p class="card-text">{{ post.content|slice:":150" }}{% if post.content|length > 150 %}...{% endif %}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>Nenhum resultado encontrado.</p>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Nenhum termo de pesquisa fornecido.</p>
+{% endif %}
+{% block extrastyles %}
+    <link rel="stylesheet" href="{% static 'app/css/search_results.css' %}">
+    {% endblock %}

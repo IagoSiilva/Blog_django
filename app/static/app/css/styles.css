@@ -21,7 +21,7 @@ body{
 .card img{
     width: 300px; 
     height: auto;
-    float: right;
+    /* float: right; */
     margin: 5px;
 }
 

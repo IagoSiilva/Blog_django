@@ -1,28 +1,91 @@
-{% extends 'base.html' %}
 
+{% load static %}
+{% include "navbar.html" %}
 {% block content %}
     <h2 class="profile-card">Meu Perfil - {{ request.user.username }}</h2>
-
-    <h3 class="profile-card">Meus Posts</h3>
-    <a href="{% url 'logout' %}" class="btn btn-danger">Sair</a>
-    <div class="row perfil">
+    <a href="{% url 'logout' %}" class="btn btn-danger btn-sair">Sair</a>
+    <h3 class="profile-card">Meus Posts:</h3>
+    <div class="perfil">
         {% for post in user_posts %}
-            <div class="col-md-4 post-card">
-                <div class="card mb-4 bg-dark">
-                    <img src="{{ post.image.url }}" class="card-img-top" alt="{{ post.title }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        <p class="card-text">{{ post.content }}</p>
-                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Detalhes</a>
-                        {% comment %} <a href="{% url 'edit_post' post.slug %}" class="btn btn-secondary">Editar</a> {% endcomment %}
+            <div class="col-md-6 mb-4">
+                <div class="post">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+                    <div class="post-content">
+                        <h5 class="post-title">{{ post.title }}</h5>
+                        <p class="post-text">{{ post.content|slice:":30" }}{% if post.content|length > 30 %}...{% endif %}</p>
+                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom">Ver mais</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+    <style>
+        h2.profile-card{
+            color: #4E4FEB;
+            font-size: 50px;
+            margin-top: 40px;
+        }
+        h3.profile-card{
+            color: #4E4FEB;
+            margin: 20px;
+        }
+        a.btn-sair{
+            justify-content: end;
+        }
+        .post {
+    display: flex;
+    background-color: #1B1B1B;
+    border: 1px solid #4E4FEB;
+    border-radius: 5px;
+    padding: 10px;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Estilos para a imagem do post */
+.post-image {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Estilos para o conteúdo do post */
+.post-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilos para o título do post */
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #4E4FEB;
+}
+
+/* Estilos para o texto do post */
+.post-text {
+    font-size: 16px;
+    color: #ced4da;
+    margin-bottom: 10px;
+}
+
+/* Estilos para o botão "Ver mais" */
+.btn-custom {
+    background-color: #4E4FEB;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #0056b3;
+}
+    </style>
 {% endblock %}
-
-
-
-
 

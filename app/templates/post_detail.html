@@ -7,6 +7,7 @@
     <title>{% block title %}Detalhes do Post{% endblock title %}</title>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'app/css/post_detail.css' %}">
+    <script src="{% static 'app/js/scripts.js' %}"></script>
 </head>
 <body>
     {% block content %}
@@ -25,10 +26,46 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Formulário de comentário -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card_detalhes bg-dark p-4 mt-4">
+                    <h4>Comentários</h4>
+                    
+                    <!-- Verifica se o usuário está autenticado para exibir o formulário -->
+                    {% if user.is_authenticated %}
+                    <div class="comment-form">
+                        <form method="post" action="{% url 'add_comment' object.slug %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="comment-text" class="mb-3">Adicione um comentário:</label>
+                                <textarea id="comment-text" name="text" class="form-control" required></textarea>
+                                <span id="comment-error" class="text-danger d-none">Por favor, escreva um comentário.</span>
+                            </div>
+                            <div class="form-group d-flex justify-content-end">
+                                <button type="submit" class="btn ml-auto">Comentar</button>
+                            </div>
+                        </form>
+                    </div>
+                    {% else %}
+                        <p>Faça login para comentar.</p>
+                    {% endif %}
+                    
+                    <ul class="list-group list-group-flush">
+                        {% for comment in object.comments.all %}
+                            <li class="list-group-item comment">
+                                <span class="author">{{ comment.author.username }}</span>
+                                <p class="text">{{ comment.text }}</p>
+                            </li>
+                        {% empty %}
+                            <li class="list-group-item no-comments">Nenhum comentário ainda.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </main>
-    {% endblock %}
-    {% block extrastyles %}
-    <link rel="stylesheet" href="{% static 'app/css/post_detail.css' %}">
     {% endblock %}
 </body>
 </html>

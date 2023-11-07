@@ -54,4 +54,10 @@ nav{
     background-color: #068FFF; 
     color: #fff;
 }
-
+a.meu_perfil{
+    text-decoration: none;
+    color: #4E4FEB;
+}
+a.meu_perfil:hover {
+    color: #068FFF;
+}

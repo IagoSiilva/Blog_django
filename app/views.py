@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Post
+from .models import Post, Comment
 from django.views import generic
 from .forms import PostForm
 from django.contrib.auth.decorators import login_required
@@ -7,10 +7,11 @@ from django.contrib.auth import login, authenticate
 from .forms import CustomUserCreationForm
 from django.shortcuts import get_object_or_404
 from app.models import CustomUser
+from django.db.models import Q
 
 def Base(request):
     return render(request, 'base.html')
-
+# lista de Posts
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
@@ -23,6 +24,29 @@ class PostList(generic.ListView):
 
 def about(request):
     return render(request, 'about.html') #Página sobre
+
+
+#Pesquisar Posts
+def search_posts(request):
+    query = request.GET.get('q')
+    if query:
+        posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+    else:
+        posts = Post.objects.all()
+    return render(request, 'search_results.html', {'posts': posts, 'query': query})
+
+
+#Adicionar comentário
+def add_comment(request, slug):
+    post = Post.objects.get(slug=slug)
+
+    if request.method == 'POST':
+        text = request.POST['text']
+        author = request.user
+        Comment.objects.create(post=post, author=author, text=text)
+
+    return redirect('post_detail', slug=slug)
+
 
 class DetailView(generic.DetailView):
     model = Post

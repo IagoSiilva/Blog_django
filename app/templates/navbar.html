@@ -29,14 +29,14 @@
                 <a class="nav-link" href="#">Link</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2 custom-input" type="search" placeholder="Procurar" aria-label="Procurar">
+            <form class="d-flex ms-auto" role="search" action="{% url 'search_posts' %}" method="get">
+              <input class="form-control me-2 custom-input" type="search" name="q" placeholder="Procurar" aria-label="Procurar">
               <button class="btn btn-custom" type="submit">Procurar</button>
             </form>
             {% if user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'user_profile' user.username %}">Meu Perfil</a>
-              </li>
+              <div class="nav-link ms-auto d-flex align-items-center">
+                <a class="meu_perfil" href="{% url 'user_profile' user.username %}">Meu Perfil</a>
+              </div>
             {% endif %}
           </div>
         </div>
