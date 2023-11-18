@@ -22,6 +22,7 @@
                     <div class="card-body">
                         <h3 class="titulodetails linha card-title">{{ object.title }}</h3>
                         <p class="card-text mt-5">{{ object.content | safe }}</p>
+                        <p class="criadoem">Data de Criação: {{ object.created_at }}</p>
                     </div>
                 </div>
             </div>
@@ -67,5 +68,6 @@
         </div>
     </main>
     {% endblock %}
+    <script src="{% static 'app/js/scripts.js' %}" defer></script>
 </body>
 </html>

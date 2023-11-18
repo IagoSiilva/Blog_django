@@ -16,12 +16,14 @@ body{
     box-shadow: 3px 3px 6px #4E4FEB;
     border-color: #4E4FEB;
     border-width: 2px;
+    overflow: hidden;
 }
 
-.card img{
-    width: 300px; 
-    height: auto;
-    /* float: right; */
+.card img {
+    width: 300px;
+    height: 200px;
+    max-height: 300px;
+    object-fit: cover;
     margin: 5px;
 }
 
@@ -34,55 +36,21 @@ body{
     padding-bottom: 2px; 
 }
 
-/* Botão de Post */
-
-
-.floating-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 60px; 
-    height: 60px; 
-    background-color: #4E4FEB;
-    border-radius: 50%; 
-    text-align: center;
-    line-height: 60px; 
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s; 
-    overflow: hidden;
-  }
-
-  /* Estilo do ícone */
-  .floating-button::before {
-    content: '\f2c7'; 
-    font-family: 'Ionicons'; 
-    font-size: 24px;
-    color: #fff;
-    display: block;
-  }
-
-  /* Estilo do texto (inicialmente oculto) */
-  #button-text {
+/* Notificação ao criar o Post */
+.notification {
     display: none;
-    font-size: 14px;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4E4FEB;
     color: #fff;
-    transition: display 0.3s; 
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
-
-  /* Efeito de expansão no hover */
-  .floating-button:hover {
-    width: 150px;
-    border-radius: 10px; 
-  }
-
-  /* Exibe o texto no hover e oculta o ícone */
-  .floating-button:hover::before {
-    content: ""; 
-  }
-  .floating-button:hover #button-text {
-    display: inline; 
-  }
-
 
 /* PERFIL POSSIVELMENTE MUDANDO ISSOO DE LUGAR EM BREVE */
 /* Personalize o fundo do perfil */
@@ -92,7 +60,7 @@ body{
     margin: 10px;
 }
 
-/* Personalize o fundo dos cards de posts */
+/* Personalizando o fundo dos cards de posts */
 
 
 /* Personalizando scroll */

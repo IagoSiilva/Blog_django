@@ -121,3 +121,8 @@ li.no-comments {
     border: 1px solid #4E4FEB; 
     border-radius: 5px; 
 }
+
+p.criadoem{
+    margin-top: 50px;
+    color: #4E4FEB;
+}

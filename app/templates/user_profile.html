@@ -1,91 +1,46 @@
-
 {% load static %}
 {% include "navbar.html" %}
-{% block content %}
-    <h2 class="profile-card">Meu Perfil - {{ request.user.username }}</h2>
-    <a href="{% url 'logout' %}" class="btn btn-danger btn-sair">Sair</a>
-    <h3 class="profile-card">Meus Posts:</h3>
-    <div class="perfil">
-        {% for post in user_posts %}
-            <div class="col-md-6 mb-4">
-                <div class="post">
-                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
-                    <div class="post-content">
-                        <h5 class="post-title">{{ post.title }}</h5>
-                        <p class="post-text">{{ post.content|slice:":30" }}{% if post.content|length > 30 %}...{% endif %}</p>
-                        <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom">Ver mais</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil</title>
+    <!-- Outras tags meta, links, ou scripts podem ser adicionados aqui -->
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="profile-card mb-4">Meu Perfil - {{ request.user.username }}</h2>
+        <a href="{% url 'logout' %}" class="btn btn-custom btn-sair float-end mb-4">Sair</a>
+
+        <h3 class="profile-card mb-3">Meus Posts:</h3>
+        <div class="row">
+            {% for post in user_posts %}
+                <div class="col-md-6 mb-4">
+                    <div class="post">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-image">
+                        <div class="post-content">
+                            <h5 class="post-title">{{ post.title|slice:":23" }}{% if post.title|length > 25 %}...{% endif %}</h5>
+                            <p class="post-text">{{ post.content|slice:":25" }}{% if post.content|length > 25 %}...{% endif %}</p>
+                            <div class="post-buttons">
+                                <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom">Ver mais</a>
+                                <a href="{% url 'edit_post' post.id %}" class="btn btn-edit">Editar</a>
+                                <form id="deleteForm{{ post.id }}" method="post" action="{% url 'delete_post' post.id %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="button" class="btn btn-delete" onclick="confirmDelete('{{ post.title }}', '{{ post.id }}')">Excluir</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-    <style>
-        h2.profile-card{
-            color: #4E4FEB;
-            font-size: 50px;
-            margin-top: 40px;
-        }
-        h3.profile-card{
-            color: #4E4FEB;
-            margin: 20px;
-        }
-        a.btn-sair{
-            justify-content: end;
-        }
-        .post {
-    display: flex;
-    background-color: #1B1B1B;
-    border: 1px solid #4E4FEB;
-    border-radius: 5px;
-    padding: 10px;
-    overflow: hidden;
-    max-width: 100%;
-}
 
-/* Estilos para a imagem do post */
-.post-image {
-    max-width: 100px;
-    max-height: 100px;
-    object-fit: cover;
-    margin-right: 10px;
-}
-
-/* Estilos para o conteúdo do post */
-.post-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Estilos para o título do post */
-.post-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #4E4FEB;
-}
-
-/* Estilos para o texto do post */
-.post-text {
-    font-size: 16px;
-    color: #ced4da;
-    margin-bottom: 10px;
-}
-
-/* Estilos para o botão "Ver mais" */
-.btn-custom {
-    background-color: #4E4FEB;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.btn-custom:hover {
-    background-color: #0056b3;
-}
-    </style>
-{% endblock %}
-
+    {% block extrastyles %}
+    <link rel="stylesheet" href="{% static 'app/css/user_profile.css' %}">
+    {% endblock %}
+    <script src="{% static 'app/js/scripts.js' %}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</body>
+</html>

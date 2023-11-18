@@ -1,9 +1,9 @@
 from django.db import models
 from django.db.models import ImageField
-from PIL import Image
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from django.utils import timezone
 # Create your models here.
 
 class CustomUser(AbstractUser):
@@ -38,6 +38,7 @@ class Post(models.Model):
     status = models.IntegerField(choices=Status, default=0)
     #Imagem
     image = models.ImageField(upload_to='post_images/', null=True, blank=True) # post_images/ é o diretório onde as imagens serão armazenadas
+    created_at = models.DateTimeField(default=timezone.now)
     def save(self, *args, **kwargs):
         if not self.slug:  # Verifica se o slug ainda não foi preenchido
             self.slug = slugify(self.title)

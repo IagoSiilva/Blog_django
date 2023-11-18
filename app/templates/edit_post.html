@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Editar Post{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'app/css/create_post.css' %}">
+    <!-- Outras tags meta, links, ou scripts podem ser adicionados aqui -->
+</head>
+<body>
+    {% block content %}
+    {% include "navbar.html" %}
+    <div class="container">
+        <h2 class="text-center">Editar Post</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" enctype="multipart/form-data" class="p-4 custom-form bg-dark" novalidate autocomplete="off">
+                    {% csrf_token %}
+                    
+                    <div class="form-group mb-4">
+                        <label for="{{ form.title.id_for_label }}" class="text-custom">Título:</label>
+                        {{ form.title }}
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="{{ form.content.id_for_label }}" class="text-custom">Conteúdo:</label>
+                        {{ form.content }}
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="{{ form.image.id_for_label }}" class="text-custom">Imagem:</label>
+                        {{ form.image }}
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="{{ form.status.id_for_label }}" class="text-custom">Status:</label>
+                        {{ form.status }}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-custom btn-block">Salvar Alterações</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+
+    {% block extrastyles %}
+    <link rel="stylesheet" href="{% static 'app/css/create_post.css' %}">
+    {% endblock %}
+    <script src="{% static 'app/js/scripts.js' %}" defer></script>
+</body>
+</html>

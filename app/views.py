@@ -96,10 +96,21 @@ def create_post(request):
     return render(request, 'create_post.html', {'form': form})
 
 @login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('user_profile', username=request.user.username)
+
+    context = {'post': post}
+    return render(request, 'delete_post.html', context)
+
+@login_required
 def user_profile(request, username):
     # lógica para exibir o perfil do usuário com base no 'username'
     user = get_object_or_404(CustomUser, username=username)  # Obtém o usuário com base no nome de usuário do URL
-    user_posts = Post.objects.filter(author=user)
+    user_posts = Post.objects.filter(author=user).order_by('-created_on')[:10]
     
     context = {
         'username': username,
@@ -107,5 +118,22 @@ def user_profile(request, username):
     }
     
     return render(request, 'user_profile.html', context)
+
+@login_required
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile', username=request.user.username)
+    else:
+        form = PostForm(instance=post)
+
+    context = {'form': form, 'post': post}
+    return render(request, 'edit_post.html', context)
+
+
 # def home(request):
 #     return render(request, "app/home.html")

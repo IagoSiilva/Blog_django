@@ -1,5 +1,52 @@
 body{
-    color: antiquewhite;
+    background-color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+}
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-track{
+    background-color: #1B1B12;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+.custom-form {
+    background-color: #1B1B1B;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #4E4FEB;
+}
+
+.custom-form label {
+    font-family: 'Manrope', sans-serif;
+    color: #4E4FEB;
+    font-size: 20px;
+}
+.custom-form input[type="reset"] {
+    display: none;
+}
+
+.custom-form input[type="file"]:not(:value) + input[type="reset"] {
+    display: inline-block;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.form-group a {
+    color: #4E4FEB;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.form-group a:hover {
+    text-decoration: underline;
 }
 
 .form-group input[type="text"],
@@ -7,16 +54,118 @@ body{
     background-color: #1B1B1B;
     color: #fff;
     border: 1px solid #4E4FEB;
-    margin: 10  px 0;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    font-family: 'Manrope', sans-serif;
 }
-div.form-group label.text-custom{
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    border-color: #4E4FEB;
+    outline: none;
+    text-decoration: none;
+}
+
+.form-group input[type="file"] {
+    background-color: #1B1B1B;
+    color: #fff;
+    border-radius: 8px;
+    border: 1px solid #4E4FEB;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+}
+
+.form-group input[type="file"]:focus {
+    border-color: #4E4FEB;
+    outline: none;
+    text-decoration: none;
+}
+.form-group input[type="file"]::-webkit-file-upload-button {
+    background-color: #4E4FEB;
+    color: #fff;
+    border: 1px solid #4E4FEB;
+    margin-right: 40px;
+    border-radius: 5px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+    border: none;
+    padding: 0;
+    text-decoration: none;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #068FFF;
+    text-decoration: none;
+}
+
+.form-group select {
+    appearance: none; /* Remove o estilo padrão do sistema para seletores */
+    background-color: #1B1B1B;
+    color: #fff;
+    border: 1px solid #4E4FEB;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    font-family: 'Manrope', sans-serif;
+}
+
+.form-group select:focus {
+    border-color: #4E4FEB;
+    outline: none;
+}
+
+/* Adiciona uma seta personalizada para o seletor */
+.form-group select::after {
+    content: "\25BC"; /* Código unicode da seta para baixo */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
     color: #4E4FEB;
+}
+.form-group select {
+    appearance: none; /* Remove a aparência padrão do sistema no Safari/Chrome */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%234E4FEB" width="18px" height="18px"><path d="M7 10l5 5 5-5z" /></svg>'); /* Ícone da seta para baixo (substitua pela sua própria imagem se desejar) */
+    background-repeat: no-repeat;
+    background-position-x: calc(100% - 12px);
+    background-position-y: 50%;
+}
+button.btn-custom {
+    background-color: #4E4FEB;
+    color: #fff;
+    border: 1px solid #4E4FEB;
+    border-radius: 8px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+button.btn-custom:hover {
+    background-color: #068FFF;
 }
 h2{
     color: #4E4FEB;
-    margin-top: 5px;
+    margin: 30px;
     
 }
+/* Notificação ao criar o Post */
+
 /* .custom-input {
     background-color: #1B1B1B;
     color: #fff;

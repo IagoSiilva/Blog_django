@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <!doctype html>
 <html lang="pt-br">
@@ -7,40 +8,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
   </head>
-  <body>
+  <body data-home-url="{% url 'home' %}">
     {% include "navbar.html" %}
     <main class="container py-5">
-      <div class="row">
-          {% for post in posts %}
-          <!-- verificar se o status do post é igual a 1 (Publicado) -->
-            {% if post.status == 1 %} {# Verifica se o status do post é 1 (Publicado) #} 
-              <div class="col-sm-12 col-md-6">
-                  <div class="card bg-dark">
-                      <div class="position-relative text-center">
-                        <h5 class="card-title position-relative m-4
-                        custom-underline text-light">{{ post.title }}</h5>
-                        {% if post.image %}
-                          <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
-                        {% endif %}
-                      </div>
-                      <div class="card-body custom-card-text">
-                          <p class="card-text">{{ post.content|slice:":150" }}{% if post.content|length > 150 %}...{% endif %} </p>
-                          {% if post.slug %}
-                          <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
-                          {% endif %}
-                      </div>
-                  </div>
-              </div>
-            {% endif %}
-          {% endfor %}
-      </div>
-  </main>
-    <a href="{% url 'create_post' %}" class="btn btn-custom floating-button" title="">Novo Post</a>
+        <div class="row">
+            {% for post in posts %}
+                {% if post.status == 1 %}
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card bg-dark">
+                            <div class="position-relative text-center">
+                                <h5 class="card-title position-relative m-4 custom-underline text-light" style="min-height: 50px;">
+                                    {{ post.title }}
+                                </h5>
+                                {% if post.image %}
+                                    <img src="{{ post.image.url }}" alt="{{ post.title }}" class="imagem_inicial card-img-top">
+                                {% endif %}
+                            </div>
+                            <div class="card-body custom-card-text">
+                                <p class="card-text" style="min-height: 100px;">
+                                    {{ post.content|slice:":140" }}{% if post.content|length > 140 %}...{% endif %}
+                                </p>
+                                {% if post.slug %}
+                                    <a href="{% url 'post_detail' post.slug %}" class="btn btn-custom float-end">Ver mais</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                <p class="criadoem" style="display: none;">{{ post.created_at }}</p>
+            {% endfor %}
+        </div>
+    </main>
+    <a href="{% url 'create_post' %}" class="btn btn-custom floating-button" title="">
+        <span id="button-text">Novo Post</span>
+    </a>
 
-
-
-
-
+    <div id="index-notification" class="notification">
+        Post Criado com sucesso!
+    </div>
 {% endblock %}
-  </body>
+<script src="{% static 'app/js/scripts.js' %}" defer></script>
+</body>
 </html>
