@@ -20,6 +20,7 @@ nav{
 .nav-link{
     color: #4E4FEB;
     font-size: 20px;
+    margin-left: 5px;
 }
 .nav-link.active {
     color: #4E4FEB; 

@@ -38,9 +38,55 @@
                 <p class="criadoem" style="display: none;">{{ post.created_at }}</p>
             {% endfor %}
         </div>
+        <div class="pagination-container">
+            <div class="pagination justify-content-center">
+                <span class="step-links">
+                    {% if posts.has_previous %}
+                        <a href="?page=1" class="pagination-link">&laquo; Primeiro</a>
+                        <a href="?page={{ posts.previous_page_number }}" class="pagination-link">Anterior</a>
+                    {% endif %}
+        
+                    <span class="current">
+                        Página {{ posts.number }} de {{ posts.paginator.num_pages }}.
+                    </span>
+        
+                    {% if posts.has_next %}
+                        <a href="?page={{ posts.next_page_number }}" class="pagination-link">Próximo</a>
+                        <a href="?page={{ posts.paginator.num_pages }}" class="pagination-link">Último &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
     </main>
-    <a href="{% url 'create_post' %}" class="btn btn-custom floating-button" title="">
-        <span id="button-text">Novo Post</span>
+    <footer class="text-center bg-dark py-3 mt-5 footer">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+      
+      
+            <!-- Github -->
+            <a
+  data-mdb-ripple-init
+  class="btn btn-link btn-floating btn-lg text-body m-1 social-icon-container"
+  href="https://github.com/IagoSiilva"
+  role="button"
+  data-mdb-ripple-color="dark"
+><ion-icon name="logo-github" class="social-icon"></ion-icon></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2023 Copyright:
+          <a class="text-body copy" style="color: #4E4FEB !important; text-decoration: none !important;" href="https://github.com/IagoSiilva">IagoBlog</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+    <!-- <a href="{% url 'create_post' %}" class="btn btn-custom floating-button" title="">
+        <span id="button-text">Novo Post</span> -->
     </a>
 
     <div id="index-notification" class="notification">

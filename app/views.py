@@ -8,6 +8,7 @@ from .forms import CustomUserCreationForm
 from django.shortcuts import get_object_or_404
 from app.models import CustomUser
 from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def Base(request):
     return render(request, 'base.html')
@@ -16,10 +17,29 @@ class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1).order_by('-created_on')
     template_name = 'index.html'
     context_object_name = 'posts' #Passando o contexto ao renderizar a página index.html na visão PostList
+    paginate_by = 10  # Número de posts por página
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print("Quantidade de posts:", len(context['posts'])) # ===> Debugando Lembrar de Deletar depois <===
+        page = self.request.GET.get('page')
+        
+        try:
+            posts = context['posts']
+        except KeyError:
+            posts = self.object_list
+        
+        paginator = context['paginator']
+        
+        try:
+            posts = paginator.page(page)
+        except PageNotAnInteger:
+            posts = paginator.page(1)
+        except EmptyPage:
+            posts = paginator.page(paginator.num_pages)
+
+        context['posts'] = posts
+
         return context
 
 def about(request):
@@ -29,13 +49,28 @@ def about(request):
 #Pesquisar Posts
 def search_posts(request):
     query = request.GET.get('q')
+    
+    # Adicionando o filtro nos posts
     if query:
-        posts = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
+        post_list = Post.objects.filter(Q(title__icontains=query) | Q(content__icontains=query))
     else:
-        posts = Post.objects.all()
+        post_list = Post.objects.all()
+
+    title = f"Resultados de Pesquisa para: {query}" if query else "Pesquisa"
+    # Configurando a paginação
+    paginator = Paginator(post_list, 10)  # Mostrar 10 posts por página
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # Se a página não é um número, entrega a primeira página.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # Se a página está fora dos limites (e.g. 9999), entrega a última página de resultados.
+        posts = paginator.page(paginator.num_pages)
+
     return render(request, 'search_results.html', {'posts': posts, 'query': query})
-
-
 #Adicionar comentário
 def add_comment(request, slug):
     post = Post.objects.get(slug=slug)
@@ -79,21 +114,30 @@ def register(request):
         form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form, 'hide_navbar': hide_navbar})
 
+# def like_post(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+
+#     # Incrementa o número de likes
+#     post.likes += 1
+#     post.save()
+
+#     # Redireciona de volta à página de detalhes do post
+#     return redirect('post_detail', slug=post.slug)
 
 @login_required # Somente os usuários autenticados possam acessar a página de criação de post.
 def create_post(request):
-    hide_navbar = True
-    if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = form.save(commit=False)  # Use commit=False para evitar salvar o objeto no banco de dados ainda
-            post.author = request.user  # Define o autor da postagem como o usuário autenticado
-            print(f"Author: {post.author}") #debugando retirar isso depois
-            post = form.save()
-            return redirect('home')  # Redireciona para a página do post criado
-    else:
-        form = PostForm()
-    return render(request, 'create_post.html', {'form': form})
+        hide_navbar = True
+        if request.method == 'POST':
+            form = PostForm(request.POST, request.FILES)
+            if form.is_valid():
+                post = form.save(commit=False)  # Usar commit=False para evitar salvar o objeto no banco de dados ainda
+                post.author = request.user  # Define o autor da postagem como o usuário autenticado
+                print(f"Author: {post.author}") #debugando retirar isso depois
+                post = form.save()
+                return redirect('home')  # Redireciona para a página do post criado
+        else:
+            form = PostForm()
+        return render(request, 'create_post.html', {'form': form})
 
 @login_required
 def delete_post(request, post_id):

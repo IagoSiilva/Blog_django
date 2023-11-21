@@ -1,4 +1,114 @@
+body{
+    background-color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+}
+
+/* Personalizando scroll */
+
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-track{
+    background-color: #1B1B12;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+
+
+/* Configurando Card dos posts pagina inicial */
+
+.card {
+    height: 500px; /* Defina a altura fixa desejada */
+    overflow: hidden;
+    border: 2px solid;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 1px 2px 6px #4E4FEB;
+    border-color: #4E4FEB;
+    border-width: 2px;
+}
+.card img {
+    width: 300px;
+    height: 200px;
+    max-height: 300px;
+    object-fit: cover;
+    margin: 5px;
+}
+/* Adicione um estilo para a classe card-img-top */
+.card-img-top {
+    height: 200px; /* Ajuste conforme necessário */
+    object-fit: cover;
+    margin: 5px;
+}
+
+/* Adicione um estilo para a classe custom-card-text */
+.custom-card-text {
+    height: 100px; /* Ajuste conforme necessário */
+    overflow: hidden;
+}
+
+/* Adicione um estilo para a classe resultados */
+.resultados {
+    color: #4E4FEB;
+    margin: 30px;
+}
+
+/* Adicione um estilo para a classe text-light */
+.text-light {
+    color: #4E4FEB;
+    margin: 10px;
+}
+
+/* Adicione um estilo para a classe btn-custom */
+.btn-custom {
+    background-color: #4E4FEB;
+    color: #fff;
+}
+
+.btn-custom:hover {
+    background-color: #068FFF;
+}
+
+/* Adicione um estilo para a classe custom-underline */
+.custom-underline {
+    border-bottom: 2px solid #4E4FEB;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+}
+
 h2.resultados{
     color: #4E4FEB;
-    margin: 20px;
+    margin: 30px;
+}
+p{
+    color: #4E4FEB;
+    margin: 10px;
+}
+
+.pagination{
+    margin-top: 40px;
+}
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination .pagination-link,
+.pagination a {
+    display: inline-block;
+    padding: 2px 2px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+
+.pagination .pagination-link:hover,
+.pagination a:hover,
+.pagination .current {
+    color: #068FFF;
 }

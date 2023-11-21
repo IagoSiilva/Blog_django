@@ -17,12 +17,14 @@
             <div class="col-md-8">
                 <div class="card card_detalhes bg-dark p-4">
                     {% if object.image %}
-                        <img src="{{ object.image.url }}" alt="{{ object.title }}" class="mx-auto mt-3 w-100 imagem-com-borda">
+                        <img src="{{ object.image.url }}" alt="{{ object.title }}" class="mx-auto mt-3 img-fluid imagem-com-borda">
                     {% endif %}
                     <div class="card-body">
                         <h3 class="titulodetails linha card-title">{{ object.title }}</h3>
                         <p class="card-text mt-5">{{ object.content | safe }}</p>
                         <p class="criadoem">Data de Criação: {{ object.created_at }}</p>
+                        <span id="like-count-{{ object.id }}" class="like-count">{{ object.likes }}</span>
+
                     </div>
                 </div>
             </div>
@@ -50,7 +52,7 @@
                         </form>
                     </div>
                     {% else %}
-                        <p>Faça login para comentar.</p>
+                        <p class="login-message">Faça login para comentar.</p>
                     {% endif %}
                     
                     <ul class="list-group list-group-flush">
@@ -68,6 +70,9 @@
         </div>
     </main>
     {% endblock %}
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="{% static 'app/js/scripts.js' %}" defer></script>
 </body>
 </html>

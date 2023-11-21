@@ -75,3 +75,55 @@ body{
     background-color: #4E4FEB;
     border-radius: 5px;
 }
+.pagination{
+    margin-top: 40px;
+}
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination .pagination-link,
+.pagination a {
+    display: inline-block;
+    padding: 2px 2px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+
+.pagination .pagination-link:hover,
+.pagination a:hover,
+.pagination .current {
+    color: #068FFF;
+}
+footer{
+    color: #4E4FEB;
+}
+
+/* styles.css */
+
+/* Aumenta o tamanho do ícone e ajusta a cor e remova a decoração do link */
+.social-icon {
+    font-size: 3rem; /* Substitua pelo tamanho desejado */
+    color: #4E4FEB; /* Substitua pela cor desejada */
+    text-decoration: none;
+}
+
+/* Adiciona algum espaçamento entre os ícones sociais */
+.mb-4 {
+    margin-bottom: 1rem; /* Substitua pelo espaçamento desejado */
+}
+
+/* Adiciona algum espaçamento ao rodapé */
+.footer {
+    padding-top: 1rem; /* Substitua pelo espaçamento desejado */
+    padding-bottom: 1rem; /* Substitua pelo espaçamento desejado */
+}
+.text-center p-3 p.copy {
+    color: #4E4FEB !important; /* Substitua pela cor desejada */
+    text-decoration: none !important; /* Remove a decoração do link */
+}

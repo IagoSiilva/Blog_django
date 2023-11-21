@@ -19,7 +19,12 @@
           <div class="col-md-6">
               <form method="post" enctype="multipart/form-data" class="p-4 custom-form bg-dark">
                   {% csrf_token %}
-                  
+                    {% if form.errors.title %}
+                         <div class="alert alert-danger bg-dark border-custom">
+                            {{ form.errors.title }}
+                         </div>
+                    {% endif %}
+
                   <div class="form-group mb-4">
                       <label for="{{ form.title.id_for_label }}" class="text-custom">Título:</label>
                       {{ form.title }}

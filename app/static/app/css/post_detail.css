@@ -12,7 +12,9 @@
 }
 
 div.card_detalhes img.imagem-com-borda {
-    border: 5px solid #4E4FEB; 
+    max-width: 100%;  /* Define a largura máxima da imagem como 100% do contêiner pai */
+    height: auto;  /* Garante que a altura seja ajustada automaticamente para manter a proporção */
+    border: 5px solid #4E4FEB;
     border-radius: 15px;
     box-shadow: 3px 3px 6px #4E4FEB;
     border-color: #4E4FEB;
@@ -124,5 +126,37 @@ li.no-comments {
 
 p.criadoem{
     margin-top: 50px;
+    color: #4E4FEB;
+}
+
+.ion-icon {
+    font-size: 24px; /* Substitua pelo tamanho desejado */
+    color: #FF0000; /* Substitua pela cor desejada */
+}
+
+.like-heart {
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+}
+
+/* Estilo para cor do coração preenchido */
+.like-heart .filled {
+    display: none;
+}
+
+.like-heart.active .outlined {
+    display: none;
+}
+
+.like-heart.active .filled {
+    display: inline;
+    color: #FF0000;
+}
+
+.login-message {
+    color: #4E4FEB; 
+}
+
+.row h4{
     color: #4E4FEB;
 }

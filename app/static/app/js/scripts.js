@@ -118,3 +118,52 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 });
+/////SSublinhado register
+document.getElementById('register-link').addEventListener('mouseover', function() {
+  this.style.textDecoration = 'underline';
+});
+
+// Adiciona um ouvinte de evento para remover o sublinhado ao retirar o mouse
+document.getElementById('register-link').addEventListener('mouseout', function() {
+  this.style.textDecoration = 'none';
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const likeHeart = document.querySelector('.like-heart');
+
+  likeHeart.addEventListener('click', function () {
+      console.log('Clique no coração');
+      likeHeart.classList.toggle('active');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const likeButtons = document.querySelectorAll('.like-heart');
+
+  likeButtons.forEach(button => {
+      button.addEventListener('click', async function () {
+          const postId = this.getAttribute('data-post-id');
+          const likeCountElement = document.getElementById(`like-count-${postId}`);
+          
+          try {
+              const response = await fetch(`/like/${postId}/`, {
+                  method: 'POST',
+              });
+
+              if (!response.ok) {
+                  throw new Error('Não foi possível curtir o post.');
+              }
+
+              // Simule a alteração visual do ícone de coração
+              this.classList.toggle('filled');
+
+              // Simule o aumento do contador de curtidas
+              const currentLikeCount = parseInt(likeCountElement.innerText, 10);
+              const newLikeCount = currentLikeCount + 1;
+              likeCountElement.innerText = newLikeCount;
+          } catch (error) {
+              console.error(error.message);
+          }
+      });
+  });
+});

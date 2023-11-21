@@ -12,6 +12,12 @@ body{
     background-color: #4E4FEB;
     border-radius: 5px;
 }
+.errorlist {
+    color: #fff;
+}
+.border-custom {
+    border: 2px #4E4FEB solid;  /* Adicione 'solid' para definir o estilo da borda */
+}
 .custom-form {
     background-color: #1B1B1B;
     color: #fff;

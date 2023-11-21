@@ -1,4 +1,160 @@
-body{
-    background-color: red;
+body {
+    margin-bottom: 0;
+}
+
+body.login-page {
+    background-color: #1B1B1B;
     font-family: 'Manrope', sans-serif;
+}
+.custom-back-btn {
+    font-size: 24px;
+    color: #4E4FEB;
+    background-color: #1B1B1B;
+    border: 2px solid #4E4FEB;
+    border-radius: 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: inline-block;  /* Torna o botão um bloco inline para ficar ao lado do formulário */
+    margin-right: 10px;  /* Adiciona uma margem à direita para separar do formulário */
+}
+
+.custom-back-btn:hover {
+    background-color: #068FFF;
+    color: #fff;
+}
+
+.custom-back-btn:hover {
+    background-color: #068FFF;
+    color: #fff;
+}
+
+/* Adicione uma regra específica para o botão de voltar no login */
+body.login-page .custom-back-btn {
+    font-size: 24px;
+    color: #4E4FEB;
+    background-color: #1B1B1B;
+    border: 2px solid #4E4FEB;
+    border-radius: 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
+@media (max-width: 767px) {
+    .custom-back-btn {
+        display: block;  /* Volta para o modo bloco no modo responsivo */
+        margin-right: 0;  /* Remove a margem à direita no modo responsivo */
+        margin-bottom: 10px;  /* Adiciona margem inferior para separar do formulário no modo responsivo */
+    }
+}
+
+.card {
+    border: 2px solid #4E4FEB;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px #4E4FEB;
+}
+
+.card-header {
+    background-color: #1B1B1B;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-header h5 {
+    color: #4E4FEB;
+    margin-right: auto;
+    font-size: 26px;  /* Ajuste o tamanho da fonte conforme necessário */
+}
+
+.card-header span{
+    color: #4E4FEB;
+    font-size: 26px;
+}
+
+.card-body {
+    background-color: #1B1B1B;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card-body form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: 2px solid #4E4FEB;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 8px;
+    background-color: #1B1B1B;
+    color: #fff;
+}
+
+button.btn-primary {
+    background-color: #4E4FEB;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+button.btn-primary:hover {
+    background-color: #068FFF;
+}
+
+label[for="id_username"],
+label[for="id_password"] {
+    font-size: 18px;
+    color: #4E4FEB;
+}
+
+input#id_username,
+input#id_password {
+    background-color: #1B1B1B;
+    color: #fff;
+    border: 2px solid #4E4FEB;
+    border-radius: 5px;
+    padding: 8px;
+}
+
+p {
+    color: #4E4FEB;
+}
+p a[href*="register"] {
+    color: #068FFF; /* Cor desejada para o link "Registre-se" */
+    text-decoration: none;
+}
+
+p a[href*="register"]:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+.font-size-lg {
+    font-size: 26px;
+}
+input#id_email {
+    background-color: #1B1B1B;
+    color: #fff;
+    border: 2px solid #4E4FEB;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.card.border-custom {
+    border: 2px solid #4E4FEB;
+    box-shadow: 0px 4px 8px 0px #4E4FEB;
+    border-radius: 10px;
+}
+.card-body .errorlist {
+    color: #4E4FEB; /* Cor da mensagem de erro */
+    margin-bottom: 30px; /* Margem superior para afastar a mensagem do botão */
+}
+
+.custom-help-text {
+    color: #4E4FEB;  
+    font-style: italic;  
+    margin-top: 5px; /* Adicione espaço superior */
+    padding-left: 20px;
+
 }
