@@ -19,7 +19,6 @@
                         <p class="post-text">{{ draft.content|slice:":25" }}{% if draft.content|length > 25 %}...{% endif %}</p>
                         <div class="post-buttons">
                             <a href="{% url 'edit_post' post_id=draft.id %}" class="btn btn-edit">Editar</a>
-                            <a href="{% url 'delete_post' post_id=draft.id %}" class="btn btn-delete" onclick="confirmDelete('{{ draft.title }}', '{{ draft.id }}')">Excluir</a>
                             <a href="{% url 'publish_draft' username=request.user.username draft_id=draft.id %}" class="btn btn-custom btn-postar">Postar</a>
                         </div>
                     </div>
