@@ -1,0 +1,64 @@
+body{
+    background-color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+}
+
+
+/* Configurações nav */
+
+nav{
+    border: #4E4FEB;
+}
+.navbar {
+    font-family: 'Manrope', sans-serif;
+    /* position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100; */
+    width: 100%;
+}
+.nav-link{
+    color: #4E4FEB;
+    font-size: 20px;
+    margin-left: 5px;
+}
+.nav-link.active {
+    color: #4E4FEB; 
+}
+.nav-link:hover {
+    color: #068FFF;
+}
+.navbar-brand{
+    font-size: 35px;
+}
+/* Barra pesquisa */
+.custom-input {
+    background-color: #1B1B1B; 
+    color: #fff; 
+    border: none;
+  }
+  
+.custom-input::placeholder {
+    color: #4E4FEB; 
+}
+.custom-input:focus {
+    background-color: #1B1B1B;
+    color: #4E4FEB;
+    border: none;
+}
+/* Botão da barra de pesquisa */
+.btn-custom{
+    background-color: #4E4FEB; 
+    color: #fff; 
+}
+.btn-custom:hover {
+    background-color: #068FFF; 
+    color: #fff;
+}
+a.meu_perfil{
+    text-decoration: none;
+    color: #4E4FEB;
+}
+a.meu_perfil:hover {
+    color: #068FFF;
+}

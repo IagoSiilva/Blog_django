@@ -11,14 +11,14 @@
 //     floatingButton.style.backgroundColor = '#007BFF';
 // });
 
-document.querySelector('form').addEventListener('submit', function(event) {
-    var commentText = document.querySelector('#comment-text').value;
+// document.querySelector('form').addEventListener('submit', function(event) {
+//     var commentText = document.querySelector('#comment-text').value;
 
-    if (commentText.trim() === '') {
-        event.preventDefault(); // Impede o envio do formulário
-        document.querySelector('#comment-error').classList.remove('d-none'); // Exibe a mensagem de erro
-    }
-});
+//     if (commentText.trim() === '') {
+//         event.preventDefault(); // Impede o envio do formulário
+//         document.querySelector('#comment-error').classList.remove('d-none'); // Exibe a mensagem de erro
+//     }
+// });
 
 // Notificação
 document.addEventListener("DOMContentLoaded", function() {
@@ -93,7 +93,7 @@ function confirmDelete(title, postId) {
       closeButton: 'custom-swal-close-button', // Classe para o botão de fechar
       icon: 'custom-swal-icon', // Classe para o ícone
       content: 'custom-swal-content', // Classe para o conteúdo
-      input: 'custom-swal-input', // Classe para a entrada (se aplicável)
+      input: 'custom-swal-input', // Classe para a entrada
       actions: 'custom-swal-actions', // Classe para os botões de ação
       confirmButton: 'custom-swal-confirm-button', // Classe para o botão de confirmação
       cancelButton: 'custom-swal-cancel-button', // Classe para o botão de cancelamento
@@ -101,7 +101,7 @@ function confirmDelete(title, postId) {
     }
   }).then((result) => {
     if (result.isConfirmed) {
-      // Se o usuário confirmar, envie o formulário de exclusão
+      // Se o usuário confirmar, envia o formulário de exclusão
       document.getElementById('deleteForm' + postId).submit();
     }
   });
@@ -117,53 +117,4 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       });
   }
-});
-/////SSublinhado register
-document.getElementById('register-link').addEventListener('mouseover', function() {
-  this.style.textDecoration = 'underline';
-});
-
-// Adiciona um ouvinte de evento para remover o sublinhado ao retirar o mouse
-document.getElementById('register-link').addEventListener('mouseout', function() {
-  this.style.textDecoration = 'none';
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const likeHeart = document.querySelector('.like-heart');
-
-  likeHeart.addEventListener('click', function () {
-      console.log('Clique no coração');
-      likeHeart.classList.toggle('active');
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  const likeButtons = document.querySelectorAll('.like-heart');
-
-  likeButtons.forEach(button => {
-      button.addEventListener('click', async function () {
-          const postId = this.getAttribute('data-post-id');
-          const likeCountElement = document.getElementById(`like-count-${postId}`);
-          
-          try {
-              const response = await fetch(`/like/${postId}/`, {
-                  method: 'POST',
-              });
-
-              if (!response.ok) {
-                  throw new Error('Não foi possível curtir o post.');
-              }
-
-              // Simule a alteração visual do ícone de coração
-              this.classList.toggle('filled');
-
-              // Simule o aumento do contador de curtidas
-              const currentLikeCount = parseInt(likeCountElement.innerText, 10);
-              const newLikeCount = currentLikeCount + 1;
-              likeCountElement.innerText = newLikeCount;
-          } catch (error) {
-              console.error(error.message);
-          }
-      });
-  });
 });

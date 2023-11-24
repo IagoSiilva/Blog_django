@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from app.models import CustomUser
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.utils import timezone
 
 def Base(request):
     return render(request, 'base.html')
@@ -150,17 +151,17 @@ def delete_post(request, post_id):
     context = {'post': post}
     return render(request, 'delete_post.html', context)
 
-@login_required
 def user_profile(request, username):
-    # lógica para exibir o perfil do usuário com base no 'username'
-    user = get_object_or_404(CustomUser, username=username)  # Obtém o usuário com base no nome de usuário do URL
-    user_posts = Post.objects.filter(author=user).order_by('-created_on')[:10]
-    
+    user = get_object_or_404(CustomUser, username=username)
+
+    # Excluindo rascunhos da consulta dos posts do usuário
+    user_posts = Post.objects.filter(author=user, status=Post.PUBLISHED).order_by('-created_on')
+
     context = {
         'username': username,
         'user_posts': user_posts,
     }
-    
+
     return render(request, 'user_profile.html', context)
 
 @login_required
@@ -179,5 +180,41 @@ def edit_post(request, post_id):
     return render(request, 'edit_post.html', context)
 
 
+@login_required
+def drafts_list(request, username):
+    user = get_object_or_404(CustomUser, username=username)
+    drafts = Post.objects.filter(author=user, status=0).order_by('-created_on')
+
+    paginator = Paginator(drafts, 10)  # Mostrar 10 rascunhos por página
+    page = request.GET.get('page')
+
+    try:
+        drafts = paginator.page(page)
+    except PageNotAnInteger:
+        drafts = paginator.page(1)
+    except EmptyPage:
+        drafts = paginator.page(paginator.num_pages)
+
+    context = {
+        'username': username,
+        'drafts': drafts,
+    }
+
+    return render(request, 'drafts_list.html', context)
 # def home(request):
 #     return render(request, "app/home.html")
+
+def publish_draft(request, username, draft_id):
+    user = get_object_or_404(CustomUser, username=username)
+    draft = get_object_or_404(Post, id=draft_id, author=user, status=Post.DRAFT)
+
+    # Atualizar a data do rascunho para a data atual
+    draft.publish_date = timezone.now()
+
+    # Alterar o status do rascunho para publicado
+    draft.status = Post.PUBLISHED
+    
+    # Salvar as alterações no rascunho
+    draft.save()
+
+    return redirect('drafts_list', username=username)

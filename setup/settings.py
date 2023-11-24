@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-btd!)%*rp%9+v9ff_7l_1iser2f^f_s3-z*_xutb4t)lw-feyr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['iagoiagos.pythonanywhere.com']
 
 
 # Application definition
@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 # Internationalization

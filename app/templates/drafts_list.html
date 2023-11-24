@@ -1,0 +1,37 @@
+
+{% load static %}
+{% include "navbar.html" %}
+{% block title %}Rascunhos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <a href="{% url 'user_profile' username=request.user.username %}" class="btn btn-custom btn-rascunhos">Voltar para Meu Perfil</a>
+    <h2 class="profile-card mb-4">Meus Rascunhos - {{ request.user.username }}</h2>
+
+    <h3 class="profile-card mb-3">Meus Rascunhos:</h3>
+    <div class="row">
+        {% for draft in drafts %}
+            <div class="col-md-6 mb-4">
+                <div class="post">
+                    <img src="{{ draft.image.url }}" alt="{{ draft.title }}" class="post-image">
+                    <div class="post-content">
+                        <h5 class="post-title">{{ draft.title|slice:":23" }}{% if draft.title|length > 25 %}...{% endif %}</h5>
+                        <p class="post-text">{{ draft.content|slice:":25" }}{% if draft.content|length > 25 %}...{% endif %}</p>
+                        <div class="post-buttons">
+                            <a href="{% url 'edit_post' post_id=draft.id %}" class="btn btn-edit">Editar</a>
+                            <a href="{% url 'delete_post' post_id=draft.id %}" class="btn btn-delete" onclick="confirmDelete('{{ draft.title }}', '{{ draft.id }}')">Excluir</a>
+                            <a href="{% url 'publish_draft' username=request.user.username draft_id=draft.id %}" class="btn btn-custom btn-postar">Postar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extrastyles %}
+<link rel="stylesheet" href="{% static 'app/css/user_profile.css' %}">
+{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

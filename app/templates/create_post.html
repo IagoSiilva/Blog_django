@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Criar Novo Post{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'app/css/create_post.css' %}">
-    <script src="{% static 'app/js/script.js' %}"></script>
+    <link rel="icon" type="image/png" href="{% static 'app/img/pngegg.png' %}">
     <!-- Outras tags meta, links, ou scripts podem ser adicionados aqui -->
 </head>
 <body>
@@ -56,5 +56,6 @@
     {% block extrastyles %}
     <link rel="stylesheet" href="{% static 'app/css/create_post.css' %}">
     {% endblock %}
+    <script src="{% static 'app/js/scripts.js' %}" defer></script>
 </body>
 </html>

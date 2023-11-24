@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
 from .views import delete_post
 from .views import edit_post
-
+from .views import user_profile, drafts_list, publish_draft
 
 
 urlpatterns = [
@@ -15,6 +15,8 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('registro/', views.register, name='register'),
     path('user/<str:username>/', views.user_profile, name='user_profile'),
+    path('user/<str:username>/drafts/', drafts_list, name='drafts_list'),
+    path('user/<str:username>/drafts/publish/<int:draft_id>/', publish_draft, name='publish_draft'),
     path('sobre/', views.about, name='about'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('delete_post/<int:post_id>/', delete_post, name='delete_post'),

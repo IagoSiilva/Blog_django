@@ -1,3 +1,129 @@
+
 body{
-    background-color: blue;
+    background-color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+}
+
+
+
+
+/* Configurando Card dos posts pagina inicial */
+
+.card {
+    border: 2px solid;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 3px 3px 6px #4E4FEB;
+    border-color: #4E4FEB;
+    border-width: 2px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 300px;
+    height: 200px;
+    max-height: 300px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+.card-text{
+    color: #068FFF;
+}
+.custom-underline {
+    border-bottom: 2px solid #4E4FEB;
+    margin-bottom: 2px; 
+    padding-bottom: 2px; 
+}
+
+/* Notificação ao criar o Post */
+.notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4E4FEB;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+/* PERFIL POSSIVELMENTE MUDANDO ISSOO DE LUGAR EM BREVE */
+/* Personalize o fundo do perfil */
+.profile-card {
+    color: #4E4FEB;
+    padding: 10px;
+    margin: 10px;
+}
+
+/* Personalizando o fundo dos cards de posts */
+
+
+/* Personalizando scroll */
+
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-track{
+    background-color: #1B1B12;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+.pagination{
+    margin-top: 40px;
+}
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pagination .pagination-link,
+.pagination a {
+    display: inline-block;
+    padding: 2px 2px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+
+.pagination .pagination-link:hover,
+.pagination a:hover,
+.pagination .current {
+    color: #068FFF;
+}
+footer{
+    color: #4E4FEB;
+}
+
+/* styles.css */
+
+/* Aumenta o tamanho do ícone e ajusta a cor e remova a decoração do link */
+.social-icon {
+    font-size: 3rem; 
+    color: #4E4FEB;
+    text-decoration: none;
+}
+
+/* Adiciona algum espaçamento entre os ícones sociais */
+.mb-4 {
+    margin-bottom: 1rem; 
+}
+
+/* Adiciona algum espaçamento ao rodapé */
+.footer {
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
+}
+.text-center p-3 p.copy {
+    color: #4E4FEB !important; 
+    text-decoration: none !important; 
 }

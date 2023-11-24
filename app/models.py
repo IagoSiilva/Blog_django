@@ -20,25 +20,31 @@ def image_filename(instance, filename):
     # O nome do arquivo será no formato 'post_images/(ID do Post) nome do arquivo'
     return f'post_images/{instance.pk}_{filename}'
 
-Status = ((0,  'Rascunho'), (1, 'Publicado'))
-
 class Post(models.Model):
-    #Título
+    DRAFT = 0
+    PUBLISHED = 1
+
+    STATUS_CHOICES = (
+        (DRAFT, 'Rascunho'),
+        (PUBLISHED, 'Publicado'),
+    )
+
+    # Título
     title = models.CharField(max_length=200, unique=True)
-    #Subtítulo
+    # Subtítulo
     slug = models.SlugField(max_length=200, blank=True)
-    #Autor do post (se eu deletar um usuário todos os outros post do autor será deletado)
+    # Autor do post (se eu deletar um usuário todos os outros post do autor será deletado)
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='app_posts', null=True)
-    #Data de criação da postagem
+    # Data de criação da postagem
     created_on = models.DateTimeField(auto_now_add=True)
-    #Data de atualização da postagem
+    # Data de atualização da postagem
     update_on = models.DateTimeField(auto_now=True)
-    #Conteúdo
+    # Conteúdo
     content = models.TextField()
-    #Status se foi ou não publicado
-    status = models.IntegerField(choices=Status, default=0)
-    #Imagem
-    image = models.ImageField(upload_to='post_images/', null=True, blank=True) # post_images/ é o diretório onde as imagens serão armazenadas
+    # Status se foi ou não publicado
+    status = models.IntegerField(choices=STATUS_CHOICES, default=DRAFT)
+    # Imagem
+    image = models.ImageField(upload_to='post_images/', null=True, blank=True)  # post_images/ é o diretório onde as imagens serão armazenadas
     created_at = models.DateTimeField(default=timezone.now)
     def save(self, *args, **kwargs):
         if not self.slug:  # Verifica se o slug ainda não foi preenchido

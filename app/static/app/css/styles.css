@@ -108,22 +108,22 @@ footer{
 
 /* Aumenta o tamanho do ícone e ajusta a cor e remova a decoração do link */
 .social-icon {
-    font-size: 3rem; /* Substitua pelo tamanho desejado */
-    color: #4E4FEB; /* Substitua pela cor desejada */
+    font-size: 3rem; 
+    color: #4E4FEB;
     text-decoration: none;
 }
 
 /* Adiciona algum espaçamento entre os ícones sociais */
 .mb-4 {
-    margin-bottom: 1rem; /* Substitua pelo espaçamento desejado */
+    margin-bottom: 1rem; 
 }
 
 /* Adiciona algum espaçamento ao rodapé */
 .footer {
-    padding-top: 1rem; /* Substitua pelo espaçamento desejado */
-    padding-bottom: 1rem; /* Substitua pelo espaçamento desejado */
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
 }
 .text-center p-3 p.copy {
-    color: #4E4FEB !important; /* Substitua pela cor desejada */
-    text-decoration: none !important; /* Remove a decoração do link */
+    color: #4E4FEB !important; 
+    text-decoration: none !important; 
 }

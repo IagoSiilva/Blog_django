@@ -1,0 +1,158 @@
+body{
+    background-color: #1B1B1B;
+    font-family: 'Manrope', sans-serif;
+}
+::-webkit-scrollbar{
+    width: 13px;
+}
+::-webkit-scrollbar-track{
+    background-color: #1B1B12;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #4E4FEB;
+    border-radius: 5px;
+}
+.custom-form {
+    background-color: #1B1B1B;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #4E4FEB;
+}
+
+h2.profile-card{
+    color: #4E4FEB;
+    font-size: 50px;
+    margin-top: 40px;
+}
+h3.profile-card{
+    color: #4E4FEB;
+    margin: 30px;
+}
+a.btn-sair{
+    justify-content: end;
+}
+.post {
+display: flex;
+background-color: #1B1B1B;
+border: 1px solid #4E4FEB;
+border-radius: 5px;
+padding: 10px;
+overflow: hidden;
+max-width: 100%;
+}
+
+/* Estilos para a imagem do post */
+.post-image {
+max-width: 100px;
+max-height: 100px;
+object-fit: cover;
+margin-right: 10px;
+}
+
+/* Estilos para o conteúdo do post */
+.post-content {
+flex: 1;
+display: flex;
+flex-direction: column;
+}
+
+/* Estilos para o título do post */
+.post-title {
+font-size: 26px;
+font-weight: bold;
+margin-bottom: 5px;
+color: #4E4FEB;
+}
+
+/* Estilos para o texto do post */
+.post-text {
+font-size: 16px;
+color: #ced4da;
+margin-bottom: 10px;
+}
+
+/* Estilos para o botão "Ver mais" */
+.btn-custom {
+background-color: #4E4FEB;
+color: #fff;
+border: none;
+padding: 10px 20px;
+border-radius: 5px;
+cursor: pointer;
+text-decoration: none;
+}
+
+.btn-custom:hover {
+background-color: #068FFF;
+}
+.post-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn-edit {
+    background-color: #4E4FEB; /* Cor azul para o botão de editar */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-delete {
+    background-color: #dc3545; /* Cor vermelha para o botão de excluir */
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3; /* Cor azul mais escura ao passar o mouse sobre o botão de editar */
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #c82333; /* Cor vermelha mais escura ao passar o mouse sobre o botão de excluir */
+    color: #fff;
+}
+
+/* Estilo personalizado para o contêiner principal */
+.custom-swal-container {
+    background-color: #1B1B1B;
+  }
+  
+  /* Estilo personalizado para o contêiner da caixa de diálogo */
+  .swal2-popup {
+    border: 2px solid #4E4FEB;
+    background-color: #000; 
+  }
+  
+  /* Estilo personalizado para o título */
+  .swal2-title {
+    color: #4E4FEB; 
+  }
+  
+  /* Estilo personalizado para o texto do popup */
+  .swal2-content {
+    color: #fff; 
+  }
+  
+  /* Estilo personalizado para o botão de confirmação */
+  .swal2-confirm {
+    background-color: #d33;
+    color: #fff;
+    border: none;
+    box-shadow: none !important;
+  }
+  
+  /* Estilo personalizado para o botão de cancelamento */
+  .swal2-cancel {
+    background-color: #3085d6;
+    color: #fff;
+  }

@@ -1,36 +1,37 @@
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Sobre o Blog{% endblock %}</title> 
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap" rel="stylesheet">
-</head>
-<body>
-    {% block content %}
-    {% include "navbar.html" %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h2 class="titulo">Sobre o Blog</h2>
+    {% load static %}
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Sobre o Blog{% endblock %}</title> 
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="{% static 'app/img/pngegg.png' %}">
+    </head>
+    <body>
+        {% block content %}
+        {% include "navbar.html" %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="titulo">Sobre o Blog</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Olá, meu nome é Iago, e estou muito empolgado para apresentar o <strong>IagoBlog</strong>, meu projeto de conclusão de curso como estudante de programação. Este blog é o resultado da minha afinidade com a tecnologia e do aprendizado ao longo dessa jornada. Ele serve como uma plataforma onde vocês possam compartilhar seus interesses, conhecimentos, e envolvam a comunidade para que todos possam contribuir com seu conhecimento em programação e tecnologia.</p>
+
+                    <p>O <strong>IagoBlog</strong> é construído com uma variedade de tecnologias e linguagens, incluindo Python, Django, HTML e CSS. Estas são as ferramentas que usei para criar este espaço online, onde você encontrará artigos, tutoriais e insights sobre programação, desenvolvimento web e muito mais.</p>
+
+                    <p>É um espaço colaborativo onde todos, desde entusiastas da tecnologia até aspirantes a programadores, podem contribuir com suas próprias experiências e insights. Juntos, vamos explorar o vasto mundo da programação, compartilhar desafios superados, projetos empolgantes e visões para o futuro digital. Seja bem-vindo e comece a explorar o <strong>IagoBlog</strong> com a gente!</p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8">
-                <p>Olá, meu nome é Iago, e estou muito empolgado para apresentar o <strong>IagoBlog</strong>, meu projeto de conclusão de curso como estudante de programação. Este blog é o resultado da minha afinidade com a tecnologia e do aprendizado ao longo dessa jornada. Ele serve como uma plataforma onde vocês possam compartilhar seus interesses, conhecimentos, e envolvam a comunidade para que todos possam contribuir com seu conhecimento em programação e tecnologia.</p>
+        {% endblock %}
 
-                <p>O <strong>IagoBlog</strong> é construído com uma variedade de tecnologias e linguagens, incluindo Python, Django, HTML e CSS. Estas são as ferramentas que usei para criar este espaço online, onde você encontrará artigos, tutoriais e insights sobre programação, desenvolvimento web e muito mais.</p>
-
-                <p>É um espaço colaborativo onde todos, desde entusiastas da tecnologia até aspirantes a programadores, podem contribuir com suas próprias experiências e insights. Juntos, vamos explorar o vasto mundo da programação, compartilhar desafios superados, projetos empolgantes e visões para o futuro digital. Seja bem-vindo e comece a explorar o <strong>IagoBlog</strong> com a gente!</p>
-            </div>
-        </div>
-    </div>
-    {% endblock %}
-
-    {% block extrastyles %}
-    <link rel="stylesheet" href="{% static 'app/css/about.css' %}">
-    {% endblock %}
-</body>
-</html>
+        {% block extrastyles %}
+        <link rel="stylesheet" href="{% static 'app/css/about.css' %}">
+        {% endblock %}
+    </body>
+    </html>

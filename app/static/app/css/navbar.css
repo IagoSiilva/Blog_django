@@ -62,3 +62,7 @@ a.meu_perfil{
 a.meu_perfil:hover {
     color: #068FFF;
 }
+.navbar-toggler-icon{
+    background-color: #4E4FEB;
+    border-radius: 20%;
+}
